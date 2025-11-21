@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="header">
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="nav-wrapper">
           <div className="logo">
@@ -15,16 +25,16 @@ const Header = () => {
           </div>
           
           <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-            <a href="#about">About</a>
-            <a href="#products">Products</a>
-            <a href="#why-choose">Why Choose Us</a>
-            <a href="#industries">Industries</a>
-            <a href="#process">Process</a>
-            <a href="#contact" className="cta-button">Contact</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+            <a href="#products" onClick={() => setIsMenuOpen(false)}>Products</a>
+            <a href="#why-choose" onClick={() => setIsMenuOpen(false)}>Why Choose Us</a>
+            <a href="#industries" onClick={() => setIsMenuOpen(false)}>Industries</a>
+            <a href="#process" onClick={() => setIsMenuOpen(false)}>Process</a>
+            <a href="#contact" className="cta-button" onClick={() => setIsMenuOpen(false)}>Contact</a>
           </nav>
 
           <button 
-            className="mobile-menu-btn"
+            className={`mobile-menu-btn ${isMenuOpen ? 'active' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <span></span>
