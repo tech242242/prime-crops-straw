@@ -1,26 +1,39 @@
+// App.jsx - Simple version
 import React from 'react'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import Products from './components/Products'
-import WhyChoose from './components/WhyChoose'
-import Industries from './components/Industries'
-import Process from './components/Process'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import './styles/index.css'
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <About />
-      <Products />
-      <WhyChoose />
-      <Industries />
-      <Process />
-      <Contact />
-      <Footer />
+    <div>
+      <header style={{
+        padding: '1rem', 
+        background: '#2d5016', 
+        color: 'white',
+        position: 'fixed',
+        width: '100%',
+        top: 0
+      }}>
+        <h1>🌾 Prime Crop Straw</h1>
+      </header>
+      
+      <main style={{
+        marginTop: '80px',
+        padding: '2rem',
+        textAlign: 'center'
+      }}>
+        <h2>Premium Wheat Straw Bales Supplier</h2>
+        <p>Website launching soon...</p>
+        <button style={{
+          padding: '1rem 2rem',
+          background: '#2d5016',
+          color: 'white',
+          border: 'none',
+          borderRadius: '8px',
+          marginTop: '1rem'
+        }}>
+          Contact Us
+        </button>
+      </main>
     </div>
   )
 }
